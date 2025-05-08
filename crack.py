@@ -49,7 +49,7 @@ class Net:
             async with pyrcrack.AirodumpNg() as pdump:
                 async for result in pdump(mon.monitor_interface, **self.networks[int(ans)-1].airodump):
                     if self.networks[int(ans) - 1].clients is not None:
-                        l = [a for a in self.networks[int(ans) - 1].clients]
+                        l = [a.bssid for a in self.networks[int(ans) - 1].clients]
                     console.clear()
                     console.print(result.table)
                     await asyncio.sleep(2)
